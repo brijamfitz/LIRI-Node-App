@@ -1,17 +1,7 @@
 require("dotenv").config();
 
-// SPOTIFY
-// spotify-this-song
+// GLOBAL VARIABLES
 // =============================================================================
-// Import keys.js file and store in variable
-var keys = require('./keys.js');
-// console.log(keys);
-
-var Spotify = require('node-spotify-api');
-
-var spotify = new Spotify(keys.spotify);
-// console.log(spotify);
-
 var nodeArgs = process.argv;
 // console.log(nodeArgs);
 var commandArg = process.argv[2];
@@ -26,6 +16,19 @@ for (var i = 3; i < nodeArgs.length; i++) {
 var userInput = argsArray.join(' ');
 // console.log(song);
 
+
+// SPOTIFY
+// spotify-this-song
+// =============================================================================
+// Import keys.js file and store in variable
+var keys = require('./keys.js');
+// console.log(keys);
+
+var Spotify = require('node-spotify-api');
+
+var spotify = new Spotify(keys.spotify);
+// console.log(spotify);
+
 function spotifyThisSong() {
   spotify.search({ type: 'track', limit: 1, query: userInput }, function(err, data) {
       if (err) {
@@ -39,9 +42,9 @@ function spotifyThisSong() {
     var albumTitle = data.tracks.items[0].album.name;
     var songPreview = data.tracks.items[0].preview_url;
     
-    console.log('The name of the artist is: ' + artistName);
-    console.log('The name of the song is: ' + songTitle);
-    console.log('The name of the album is: ' + albumTitle);
+    console.log('The name of the artist is: ' + artistName  + '.');
+    console.log('The name of the song is: ' + songTitle  + '.');
+    console.log('The name of the album is: ' + albumTitle  + '.');
     console.log('Follow this link for a preview of the song: ' + songPreview);
   });
 }
@@ -50,6 +53,7 @@ function spotifyThisSong() {
 // concert-this
 // =============================================================================
 var request = require('request');
+var moment = require('moment');
 
 function concertThis() {
   request('https://rest.bandsintown.com/artists/' + userInput + '/events?app_id=codingbootcamp', function (error, response, body) {
@@ -65,11 +69,13 @@ function concertThis() {
 
       var venueName = body[0].venue.name;
       var venueCity = body[0].venue.city + ', ' + body[0].venue.region;
-      var concertDate = body[0].datetime;
+      var concertDate = body[0].datetime.split('T');
+      var concertDateSplit = concertDate[0];
+      var concertMoment = moment(concertDateSplit).format('MM/DD/YYYY');
 
-      console.log('The next concert is at: ' + venueName);
-      console.log('The venue is located in: ' + venueCity);
-      console.log('The concert is on: ' + concertDate); // Add moment.js
+      console.log('The next concert is at: ' + venueName  + '.');
+      console.log('The venue is located in: ' + venueCity  + '.');
+      console.log('The concert is on: ' + concertMoment  + '.'); // Add moment.js
   });
 }
 
@@ -83,7 +89,7 @@ function movieThis() {
       console.log('error:', error); 
     }
     // Print the response status code if a response was received
-    // console.log('statusCode:', response && response.statusCode); 
+    console.log('statusCode:', response && response.statusCode); 
 
     var body = JSON.parse(body);
     // console.log('body:', body);
@@ -99,6 +105,7 @@ function movieThis() {
 
     console.log('The title of the movie is ' + body.Title + '.');
     console.log('It was released in ' + body.Year  + '.');
+    console.log('It was directed by ' + body.Director + '.');
     console.log('IMDB gives it a ' + body.imdbRating + ' out of 10.');
     console.log('Rotten Tomatoes gives it a ' + body.Ratings[1].Value + ' rating.');
     console.log('It was produced in ' + body.Country  + '.');
@@ -110,7 +117,24 @@ function movieThis() {
 
 // DO-WHAT-IT-SAYS
 // =============================================================================
+var fs = require('fs');
 
+fs.readFile('random.txt', 'utf8', function(error, data) {
+  if (error) {
+    console.log(error);
+  }
+
+  dataSplit = data.split(',');
+  // console.log(dataSplit);
+
+  // console.log(dataSplit[0]);
+  // console.log(dataSplit[1]);
+
+  if (commandArg === 'do-what-it-says') {
+    var array = process.argv;
+    array.push(dataSplit[0], dataSplit[1]);
+  }
+})
 
 
 // FUNCTION CALLS
