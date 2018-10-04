@@ -139,15 +139,29 @@ fs.readFile('random.txt', 'utf8', function(error, data) {
 
 // FUNCTION CALLS
 // =============================================================================
-if (commandArg === 'spotify-this-song') {
+switch (commandArg) {
+  case 'spotify-this-song':
   spotifyThisSong();
-}
-else if (commandArg === 'concert-this') {
+  break;
+
+  case 'concert-this':
   concertThis();
-}
-else if (commandArg === 'movie-this') {
+  break;
+
+  case 'movie-this':
   movieThis();
+  break;
 }
+
+// if (commandArg === 'spotify-this-song') {
+//   spotifyThisSong();
+// }
+// else if (commandArg === 'concert-this') {
+//   concertThis();
+// }
+// else if (commandArg === 'movie-this') {
+//   movieThis();
+// }
 // else if (commandArg === 'do-what-it-says') {
 //   doWhatItSays();
 // }
