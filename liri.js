@@ -34,6 +34,24 @@ function spotifyThisSong() {
     console.log('The name of the song is: ' + songTitle  + '.');
     console.log('The name of the album is: ' + albumTitle  + '.');
     console.log('Follow this link for a preview of the song: ' + songPreview);
+
+    var dataToAppend = 
+      'spotify-this-song ' + userInput +
+      '\nThe name of the artist is: ' + artistName  + '.' +
+      '\nThe name of the song is: ' + songTitle  + '.' +
+      '\nThe name of the album is: ' + albumTitle  + '.' +
+      '\nFollow this link for a preview of the song: ' + songPreview + '\n';
+
+    fs.appendFile('log.txt', dataToAppend, function(err) {
+      // If an error was experienced we will log it.
+      if (err) {
+        console.log(err);
+      }
+      // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+      else {
+        console.log('Content Added!');
+      }
+    });
   });
 }
 function spotifyDefault() {
@@ -50,6 +68,24 @@ function spotifyDefault() {
     console.log('The name of the song is: ' + songTitle  + '.');
     console.log('The name of the album is: ' + albumTitle  + '.');
     console.log('Follow this link for a preview of the song: ' + songPreview);
+
+    var dataToAppend = 
+      'spotify-this-song ' +
+      '\nThe name of the artist is: ' + artistName  + '.' +
+      '\nThe name of the song is: ' + songTitle  + '.' +
+      '\nThe name of the album is: ' + albumTitle  + '.' +
+      '\nFollow this link for a preview of the song: ' + songPreview + '\n';
+
+    fs.appendFile('log.txt', dataToAppend, function(err) {
+      // If an error was experienced we will log it.
+      if (err) {
+        console.log(err);
+      }
+      // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+      else {
+        console.log('Content Added!');
+      }
+    });
   });
 }
 
@@ -69,15 +105,35 @@ function concertThis() {
       console.log('statusCode:', response && response.statusCode); 
 
       var body = JSON.parse(body);
+      var bandName = body[0].lineup[0];
       var venueName = body[0].venue.name;
       var venueCity = body[0].venue.city + ', ' + body[0].venue.region;
       var concertDate = body[0].datetime.split('T');
       var concertDateSplit = concertDate[0];
       var concertMoment = moment(concertDateSplit).format('MM/DD/YYYY');
 
+      console.log(bandName);
       console.log('The next concert is at: ' + venueName  + '.');
       console.log('The venue is located in: ' + venueCity  + '.');
-      console.log('The concert is on: ' + concertMoment  + '.'); // Add moment.js
+      console.log('The concert is on: ' + concertMoment  + '.');
+
+    dataToAppend = 
+      'concert-this ' + userInput +
+      '\n' + bandName + 
+      '\nThe next concert is at: ' + venueName  + '.' +
+      '\nThe venue is located in: ' + venueCity  + '.' +
+      '\nThe concert is on: ' + concertMoment  + '.' + '\n';
+
+    fs.appendFile('log.txt', dataToAppend, function(err) {
+      // If an error was experienced we will log it.
+      if (err) {
+        console.log(err);
+      }
+      // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+      else {
+        console.log('Content Added!');
+      }
+    });
   });
 }
 
@@ -96,14 +152,37 @@ function movieThis() {
     var body = JSON.parse(body);
 
     console.log(body.Title);
-    console.log('It was released in ' + body.Year  + '.');
-    console.log('It was directed by ' + body.Director + '.');
-    console.log('IMDB gives it a ' + body.imdbRating + ' out of 10.');
-    console.log('Rotten Tomatoes gives it a ' + body.Ratings[1].Value + ' rating.');
-    console.log('It was produced in ' + body.Country  + '.');
-    console.log('The language(s) is ' + body.Language  + '.');
-    console.log('The cast includes ' + body.Actors  + '.');
-    console.log('And here is a short summary of the plot: ' + body.Plot);
+    console.log('Released in: ' + body.Year  + '.');
+    console.log('Directed by: ' + body.Director + '.');
+    console.log('IMDB rating: ' + body.imdbRating + ' out of 10.');
+    console.log('Rotten Tomatoes rating: ' + body.Ratings[1].Value + '.');
+    console.log('Produced in: ' + body.Country  + '.');
+    console.log('Language(s): ' + body.Language  + '.');
+    console.log('Cast includes: ' + body.Actors  + '.');
+    console.log('Short plot summary: ' + body.Plot);
+
+    dataToAppend = 
+      'movie-this ' + userInput +
+      '\n' + body.Title +
+      '\nReleased in: ' + body.Year  + '.' +
+      '\nDirected by: ' + body.Director + '.' +
+      '\nIMDB rating: ' + body.imdbRating + ' out of 10.' +
+      '\nRotten Tomatoes rating: ' + body.Ratings[1].Value + '.' +
+      '\nProduced in: ' + body.Country  + '.' +
+      '\nLanguage(s): ' + body.Language  + '.' +
+      '\nCast includes: ' + body.Actors  + '.' +
+      '\nShort plot summary: ' + body.Plot + '\n';
+
+    fs.appendFile('log.txt', dataToAppend, function(err) {
+      // If an error was experienced we will log it.
+      if (err) {
+        console.log(err);
+      }
+      // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+      else {
+        console.log('Content Added!');
+      }
+    });
   });
 }
 function movieDefault() {
@@ -118,14 +197,37 @@ function movieDefault() {
     var body = JSON.parse(body);
 
     console.log(body.Title);
-    console.log('It was released in ' + body.Year  + '.');
-    console.log('It was directed by ' + body.Director + '.');
-    console.log('IMDB gives it a ' + body.imdbRating + ' out of 10.');
-    console.log('Rotten Tomatoes gives it a ' + body.Ratings[1].Value + ' rating.');
-    console.log('It was produced in ' + body.Country  + '.');
-    console.log('The language(s) is ' + body.Language  + '.');
-    console.log('The cast includes ' + body.Actors  + '.');
-    console.log('And here is a short summary of the plot: ' + body.Plot);
+    console.log('Released in: ' + body.Year  + '.');
+    console.log('Directed by: ' + body.Director + '.');
+    console.log('IMDB rating: ' + body.imdbRating + ' out of 10.');
+    console.log('Rotten Tomatoes rating: ' + body.Ratings[1].Value + '.');
+    console.log('Produced in: ' + body.Country  + '.');
+    console.log('Language(s): ' + body.Language  + '.');
+    console.log('Cast includes: ' + body.Actors  + '.');
+    console.log('Short plot summary: ' + body.Plot);
+
+    dataToAppend = 
+      'movie-this ' + userInput +
+      '\n' + body.Title +
+      '\nReleased in: ' + body.Year  + '.' +
+      '\nDirected by: ' + body.Director + '.' +
+      '\nIMDB rating: ' + body.imdbRating + ' out of 10.' +
+      '\nRotten Tomatoes rating: ' + body.Ratings[1].Value + '.' +
+      '\nProduced in: ' + body.Country  + '.' +
+      '\nLanguage(s): ' + body.Language  + '.' +
+      '\nCast includes: ' + body.Actors  + '.' +
+      '\nShort plot summary: ' + body.Plot + '\n';
+
+    fs.appendFile('log.txt', dataToAppend, function(err) {
+      // If an error was experienced we will log it.
+      if (err) {
+        console.log(err);
+      }
+      // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+      else {
+        console.log('Content Added!');
+      }
+    });
   });
 }
 
