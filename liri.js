@@ -40,7 +40,8 @@ function spotifyThisSong() {
       '\nThe name of the artist is: ' + artistName  + '.' +
       '\nThe name of the song is: ' + songTitle  + '.' +
       '\nThe name of the album is: ' + albumTitle  + '.' +
-      '\nFollow this link for a preview of the song: ' + songPreview + '\n';
+      '\nFollow this link for a preview of the song: ' + songPreview +
+      '\n-------------------------------------------\n';
 
     fs.appendFile('log.txt', dataToAppend, function(err) {
       // If an error was experienced we will log it.
@@ -74,7 +75,8 @@ function spotifyDefault() {
       '\nThe name of the artist is: ' + artistName  + '.' +
       '\nThe name of the song is: ' + songTitle  + '.' +
       '\nThe name of the album is: ' + albumTitle  + '.' +
-      '\nFollow this link for a preview of the song: ' + songPreview + '\n';
+      '\nFollow this link for a preview of the song: ' + songPreview +
+      '\n-------------------------------------------\n';
 
     fs.appendFile('log.txt', dataToAppend, function(err) {
       // If an error was experienced we will log it.
@@ -122,7 +124,8 @@ function concertThis() {
       '\n' + bandName + 
       '\nThe next concert is at: ' + venueName  + '.' +
       '\nThe venue is located in: ' + venueCity  + '.' +
-      '\nThe concert is on: ' + concertMoment  + '.' + '\n';
+      '\nThe concert is on: ' + concertMoment  + '.' +
+      '\n-------------------------------------------\n';
 
     fs.appendFile('log.txt', dataToAppend, function(err) {
       // If an error was experienced we will log it.
@@ -171,7 +174,8 @@ function movieThis() {
       '\nProduced in: ' + body.Country  + '.' +
       '\nLanguage(s): ' + body.Language  + '.' +
       '\nCast includes: ' + body.Actors  + '.' +
-      '\nShort plot summary: ' + body.Plot + '\n';
+      '\nShort plot summary: ' + body.Plot +
+      '\n-------------------------------------------\n';
 
     fs.appendFile('log.txt', dataToAppend, function(err) {
       // If an error was experienced we will log it.
@@ -216,7 +220,8 @@ function movieDefault() {
       '\nProduced in: ' + body.Country  + '.' +
       '\nLanguage(s): ' + body.Language  + '.' +
       '\nCast includes: ' + body.Actors  + '.' +
-      '\nShort plot summary: ' + body.Plot + '\n';
+      '\nShort plot summary: ' + body.Plot +
+      '\n-------------------------------------------\n';
 
     fs.appendFile('log.txt', dataToAppend, function(err) {
       // If an error was experienced we will log it.
