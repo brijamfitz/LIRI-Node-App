@@ -259,24 +259,6 @@ function doWhatItSays() {
 
 // FUNCTION CALLS
 // =============================================================================
-// switch (commandArg) {
-//   case 'spotify-this-song':
-//   spotifyThisSong();
-//   break;
-
-//   case 'concert-this':
-//   concertThis();
-//   break;
-
-//   case 'movie-this':
-//   movieThis();
-//   break;
-
-//   case 'do-what-it-says':
-//   doWhatItSays();
-//   break;
-// }
-
 if (commandArg === 'spotify-this-song' && argsArray.length >= 1) {
   spotifyThisSong();
 }
