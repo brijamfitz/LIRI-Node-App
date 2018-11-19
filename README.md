@@ -17,8 +17,21 @@ Using terminal, navigate to the repository. From here, use the following command
 
 All your commands and the data received will also be logged in the `log.txt` file.
 
+**How to use:**
+* Clone the repo to your local machine
+* In Terminal, cd into the directory
+* Run `npm install` to download the developer dependencies
+* Run the above commands!
+
 Have fun!
 
+&nbsp;
+
+Designed, built, and maintained by Brian Fitzgerald
+
+Email: brianjfitzgerald@gmail.com
+
+&#169; 2018
 
 
 
