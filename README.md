@@ -25,6 +25,11 @@ All your commands and the data received will also be logged in the `log.txt` fil
 
 Have fun!
 
+**APIs used:**
+* Spotify
+* Bands in Town
+* OMDB
+
 &nbsp;
 
 Designed, built, and maintained by Brian Fitzgerald
