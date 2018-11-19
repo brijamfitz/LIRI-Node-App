@@ -19,7 +19,7 @@ All your commands and the data received will also be logged in the `log.txt` fil
 
 **How to use:**
 * Clone the repo to your local machine
-* In Terminal, cd into the directory
+* In Terminal, `cd` into the directory
 * Run `npm install` to download the developer dependencies
 * Run the above commands!
 
