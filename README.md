@@ -2,6 +2,8 @@
 
 Please view my LIRI tutorial video here: [LIRI Node App Demo](https://drive.google.com/open?id=1yojqRfaxroPG6-6pIbv2kmO2JCkWC9_d)
 
+![image](assets/images/screenshot-liri.png)
+
 You can search your favorite songs, concerts, and movies using the LIRI Node App!
 
 Using terminal, navigate to the repository. From here, use the following commands to get real time information!
@@ -36,7 +38,7 @@ Designed, built, and maintained by Brian Fitzgerald
 
 Email: brianjfitzgerald@gmail.com
 
-&#169; 2018
+Copyright &#169; 2018
 
 
 
